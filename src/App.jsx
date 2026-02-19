@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
-import CartPage from './pages/CartPage'; // Modal-ku badhula Page
+import CartPage from './pages/CartPage';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -39,10 +39,7 @@ const App = () => {
         <Navbar cartCount={cart.length} />
         <div className="container mx-auto p-4">
           <Routes>
-            {/* Home Page: Product List kaattum */}
             <Route path="/" element={<ProductList products={products} addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />} />
-            
-            {/* Cart Page: Separate page for cart items */}
             <Route path="/cart" element={<CartPage cartItems={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           </Routes>
         </div>
