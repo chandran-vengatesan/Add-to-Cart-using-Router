@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const discount = subtotal * 0.10; // 10% Discount logic
+  const discount = subtotal * 0.10;
   const total = subtotal - discount;
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-4">
-      {/* Continue Shopping Link - Always Visible */}
       <Link to="/" className="text-blue-600 hover:underline mb-4 inline-block font-medium">
         &larr; Continue Shopping
       </Link>
@@ -32,7 +31,6 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
                   <h4 className="font-bold text-gray-800 line-clamp-1">{item.title}</h4>
                   <p className="text-blue-600 font-bold">${item.price}</p>
                   
-                  {/* +/- Quantity Buttons */}
                   <div className="flex items-center gap-2 mt-2 bg-gray-100 w-fit rounded-lg px-2">
                     <button onClick={() => updateQuantity(item.id, -1)} className="px-2 font-bold hover:text-blue-600">-</button>
                     <span className="font-semibold w-6 text-center">{item.quantity}</span>
@@ -44,7 +42,6 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
             ))}
           </div>
 
-          {/* Summary Section with 10% Discount */}
           <div className="bg-white p-6 rounded-xl shadow-md h-fit border sticky top-24">
             <h3 className="text-xl font-bold border-b pb-3 text-gray-700">Order Summary</h3>
             <div className="mt-4 space-y-3">
@@ -70,5 +67,6 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
     </div>
   );
 };
+
 
 export default CartPage;
